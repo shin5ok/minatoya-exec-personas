@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ミナトヤ 幹部シミュレーター</title>
+  <link rel="icon" href="/static/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div id="bg-waves" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">港</span>
+      <div>
+        <div class="brand-title">MINATOYA 幹部シミュレーター</div>
+        <div class="brand-sub">社内決裁・幹部ミーティングの練習（架空の会社・人物です）</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button id="user-badge" class="user-badge" type="button" title="これまでの相談を見る">👤 <span id="user-name-label"></span> ▾</button>
+    </div>
+  </header>
+
+  <!-- ===================== 開始画面 ===================== -->
+  <main id="screen-start" class="screen">
+    <section class="hero">
+      <h1>誰と話しますか？</h1>
+      <p class="lead">アイコンをクリックして選びます。<b>1人</b>なら対話モード、<b>複数</b>ならミーティングモードになります。</p>
+    </section>
+
+    <section id="persona-grid" class="persona-grid" aria-label="キャラクター"></section>
+
+    <section class="setup-card">
+      <div class="mode-row">
+        <span id="mode-pill" class="mode-pill mode-none">キャラクターを選んでください</span>
+      </div>
+
+      <label class="field">
+        <span class="field-label">相談するテーマ・決めたいこと</span>
+        <textarea id="theme" rows="2" placeholder="例：AI発注「シオミ」を来年3月までに全店へ展開したい。承認がほしい"></textarea>
+        <div id="theme-chips" class="chips" aria-label="いまの経営の論点"></div>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span class="field-label">あなたの名前</span>
+          <input id="user-name" type="text" placeholder="例：佐藤" maxlength="20" />
+        </label>
+        <label class="field">
+          <span class="field-label">あなたの立場</span>
+          <input id="user-role" type="text" placeholder="例：情報システム本部 TIDE推進室長" maxlength="60" />
+        </label>
+        <label class="field">
+          <span class="field-label">持ち時間</span>
+          <select id="duration"></select>
+        </label>
+      </div>
+
+      <button id="start-btn" class="primary-btn" disabled>
+        <span class="btn-icon">▶</span> 会話を始める
+      </button>
+    </section>
+  </main>
+
+  <!-- ===================== ローディング ===================== -->
+  <div id="loading" class="loading" hidden>
+    <div class="loading-card">
+      <div id="loading-avatars" class="loading-avatars"></div>
+      <h2 class="loading-title">ペルソナを準備しています<span class="dots"><i>.</i><i>.</i><i>.</i></span></h2>
+      <ol id="loading-steps" class="loading-steps"></ol>
+      <div id="loading-docs" class="doc-chips"></div>
+      <button id="loading-cancel" class="ghost-btn loading-cancel" type="button">キャンセル</button>
+    </div>
+  </div>
+
+  <!-- ===================== 会話画面 ===================== -->
+  <main id="screen-chat" class="screen" hidden>
+    <section class="stage">
+      <div id="stage-avatars" class="stage-avatars"></div>
+      <div class="stage-info">
+        <div class="stage-meta">
+          <span id="chat-mode" class="mode-pill"></span>
+          <span id="phase-pill" class="phase-pill">開始前</span>
+          <span id="decision-pill" class="decision-pill">未決</span>
+        </div>
+        <div id="chat-theme" class="chat-theme"></div>
+        <div class="timer-wrap">
+          <div id="timer" class="timer">--:--</div>
+          <div class="timer-bar"><div id="timer-fill" class="timer-fill"></div></div>
+        </div>
+      </div>
+      <div class="stage-actions">
+        <button id="panel-btn" class="ghost-btn" title="読み込んだ資料">📚 資料</button>
+        <button id="finish-btn" class="ghost-btn finish" title="結論が出たので、会を締めて結論を表示する" hidden>🏁 結論を出して終了</button>
+        <button id="cancel-btn" class="ghost-btn danger" title="相談をやめてトップに戻る">✕ キャンセル</button>
+      </div>
+    </section>
+
+    <section class="chat-wrap">
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+      <div id="typing" class="typing" hidden></div>
+    </section>
+
+    <section class="composer">
+      <div id="attach-list" class="attach-list"></div>
+      <div class="composer-row">
+        <label class="icon-btn" title="ファイルを添付（PDF・画像・テキスト）">
+          📎<input id="file-input" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.gif,.txt,.md,.csv,image/*,application/pdf,text/*" hidden />
+        </label>
+        <textarea id="input" rows="1" placeholder="まずは挨拶から（例：おはようございます。お時間ありがとうございます）"></textarea>
+        <button id="mic-btn" class="icon-btn mic" title="音声入力（Gemini Live）" hidden>🎙️</button>
+        <button id="send-btn" class="send-btn" title="送信（Enter）">送信</button>
+      </div>
+      <div id="voice-status" class="voice-status" hidden></div>
+    </section>
+
+    <aside id="panel" class="panel" hidden>
+      <div class="panel-head">
+        <b>読み込んだ資料</b>
+        <button id="panel-close" class="ghost-btn">✕</button>
+      </div>
+      <div id="panel-body" class="panel-body"></div>
+    </aside>
+  </main>
+
+  <!-- ===================== これまでの相談 ===================== -->
+  <aside id="history" class="panel history" hidden>
+    <div class="panel-head">
+      <b>これまでの相談</b>
+      <button id="history-close" class="ghost-btn">✕</button>
+    </div>
+    <div id="history-body" class="panel-body"></div>
+  </aside>
+
+  <!-- ===================== 結論 ===================== -->
+  <div id="verdict" class="verdict" hidden>
+    <div class="verdict-card">
+      <div id="verdict-stamp" class="stamp">承認</div>
+      <div id="verdict-by" class="verdict-by"></div>
+      <p id="verdict-reason" class="verdict-reason"></p>
+      <ul id="verdict-conditions" class="verdict-conditions"></ul>
+      <div class="verdict-actions">
+        <button id="verdict-close" class="ghost-btn">会話を見返す</button>
+        <button id="restart-btn" class="primary-btn">トップに戻る</button>
+      </div>
+    </div>
+  </div>
+
+  <template id="tpl-persona">
+    <button class="persona-card" type="button">
+      <span class="check">✓</span>
+      <span class="avatar-ring"><img class="avatar" alt="" /><span class="halo"></span></span>
+      <span class="persona-name"></span>
+      <span class="persona-role"></span>
+      <span class="persona-tagline"></span>
+    </button>
+  </template>
+
+  <script src="/static/audio.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

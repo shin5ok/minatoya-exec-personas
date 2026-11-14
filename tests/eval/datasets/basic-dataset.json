@@ -1,0 +1,43 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "meeting_greeting_smalltalk",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "おはようございます！本日はお時間ありがとうございます。"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "社長が挨拶を返し、釣りや店回りなどの短い雑談を振る。他の役員も軽く乗り、まだ本題の結論は出さない。"}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "meeting_proposal_questions",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "AI発注「シオミ」を来年3月までに全190店へ展開したいので、承認をお願いします。"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "CTOは測り方や小さく試す方法を、CIOは止まったときの備えや運用体制を問う。役員どうしの掛け合いがあり、社長はこの時点では結論を言わない。資料にない数字は作らない。"}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "meeting_cost_cutting_drivers",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "下期の挽回策として、協力会社の運賃を一律5%下げてもらうのはどうでしょうか。"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "社長は協力会社の買い叩きに強く反対する（声が低くなり、敬語が減る）。「それは、うちのやり方じゃない」という趣旨。"}]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,580 @@
+# =====================================================================
+# ミナトヤ・ホールディングス 事実・数値の「正」（Single Source of Truth）
+# ---------------------------------------------------------------------
+# - 会社・人物・数値・イベントはすべて架空です。
+# - 金額の単位は「億円」（特記なき限り）。
+# - 決算期は2月末。期のキーは「期末の年-月」で表します。
+#     "2026-02"        = 2026年2月期（2025年3月〜2026年2月）
+#     h1 の "2027-02"  = 2027年2月期 中間期（2026年3月〜8月）
+# - 他ファイルの数字はここに合わせます。`python3 scripts/validate.py` で検算できます。
+# =====================================================================
+as_of: 2026-11-01
+
+company:
+  name: ミナトヤ・ホールディングス株式会社
+  name_en: Minatoya Holdings, Inc.
+  founded: "1962-04"
+  holding_structure_since: "2015-09"
+  listing: 東証プライム（証券コードは架空のため設定しない）
+  head_office: 静岡県静岡市清水区（清水本社）
+  tokyo_office: 東京都品川区（東京本部。ミナトヤ・デジタル本社も同じビル）
+  capital: 182
+  fiscal_year_end: 2月末日
+  philosophy: 必要なものを、必要な人へ、まっすぐ届ける。
+  vision_2030: 地域の暮らしを支える、日本一「届ける力」の強い小売・物流グループ
+  employees:
+    as_of: 2026-08-31
+    regular: 9860
+    temporary_avg_8h: 22400
+  point_members_10k: 420     # みなとポイント会員（万人）
+  app_members_10k: 165       # うちアプリ会員（万人）
+
+group_companies:
+  - name: 株式会社ミナトヤ
+    business: 食品スーパー「ミナトヤ」「ミナトヤ Quick」、ネットスーパー
+    president: 石垣 美和
+  - name: 株式会社ミナトヤ・ロジスティクス
+    business: 3PL・輸配送・倉庫（グループ内物流と外部荷主向け）
+    president: 大河内 剛
+    established: "2008-04"
+  - name: 株式会社ミナトヤ・デジタル
+    business: 物流SaaS「MINATOYA Logi Cloud」、AI・データ基盤、アプリ・EC基盤
+    president: 真壁 玲奈
+    established: "2022-04"
+  - name: 株式会社ミナトヤ・プロパティ
+    business: 商業施設・物流施設の保有と管理
+    president: 西脇 昌弘（兼任）
+
+timeline:
+  - {date: "1962-04", event: 杉村源吉が清水港近くで「港屋商店」（青果・乾物の卸）を創業。オート三輪1台で配達した}
+  - {date: "1970-10", event: スーパー1号店「みなとや 入江店」（清水）を開店}
+  - {date: "1973-06", event: 株式会社港屋を設立（法人化）}
+  - {date: "1981-03", event: 浜松市に出店し遠州地区へ進出。配送は地元の運送会社に委託}
+  - {date: "1986-09", event: 社名を株式会社ミナトヤに変更}
+  - {date: "1990-05", event: 杉村健三（創業者の長男）が2代目社長に就任}
+  - {date: "1991-11", event: 初の自社物流センター「清水DC」が稼働}
+  - {date: "1995-04", event: 配送委託に競争入札を導入（遠州地区の委託先が大きく入れ替わる）}
+  - {date: "1998-02", event: 基幹システム「MOSS」が稼働}
+  - {date: "2001-03", event: 東証二部に上場}
+  - {date: "2004-09", event: 愛知県に進出}
+  - {date: "2006-03", event: 東証一部に指定}
+  - {date: "2008-04", event: 株式会社ミナトヤ・ロジスティクスを設立し、3PL外販を開始}
+  - {date: "2010-04", event: 神奈川県に進出}
+  - {date: "2012-10", event: 山梨県・長野県に進出}
+  - {date: "2014-04", event: 協力会社との取引ルール「パートナー憲章」を制定（荷待ち時間の有償化・燃料サーチャージ連動など）}
+  - {date: "2015-09", event: 持株会社体制へ移行し、ミナトヤ・ホールディングス株式会社に商号変更}
+  - {date: "2016-10", event: 都市型小型店「ミナトヤ Quick」1号店（静岡駅前）を開店}
+  - {date: "2018-07", event: ネットスーパーを開始}
+  - {date: "2019-04", event: 浜松の物流センターでカートグラフ社の協働ロボット実証を開始}
+  - {date: "2021-05", event: 望月誠一郎が社長に就任（創業家以外から初）。杉村健三は会長に}
+  - {date: "2022-04", event: カートグラフ株式会社を約85億円で買収し、株式会社ミナトヤ・デジタルを設立。東証プライム市場へ移行}
+  - {date: "2023-04", event: 物流SaaS「MINATOYA Logi Cloud」の外販を開始}
+  - {date: "2023-10", event: 浜松スマートDC（第1期、AMR180台）が稼働}
+  - {date: "2024-03", event: ランサムウェア被害で清水DC・沼津DCの出荷が36時間停止（社内呼称「3.9」）}
+  - {date: "2024-04", event: 共同配送「東海ルートシェア」を開始。基幹刷新「Project TIDE」を決裁。CISOを設置}
+  - {date: "2024-06", event: 杉村健三が会長を退任し相談役に}
+  - {date: "2024-10", event: データ基盤「MINATO Data Harbor」が稼働}
+  - {date: "2025-04", event: 中期経営計画「MINATOYA NEXT 2028」を公表}
+  - {date: "2025-06", event: 社内向け生成AI「みなとAI」を導入}
+  - {date: "2025-09", event: TIDE第1フェーズ（会計・人事給与）が稼働}
+  - {date: "2025-10", event: AI発注「シオミ」の実証を12店舗で開始}
+  - {date: "2026-04", event: 物流統括管理者（CLO）に大河内剛を選任。AI利用ガイドラインv2を施行}
+  - {date: "2026-09", event: TIDE第2フェーズの遅延を経営会議に正式報告（9月29日）}
+  - {date: "2026-10", event: 中間決算発表（9日）、決算説明会（14日）、経営会議でシオミ30店拡大を条件付き承認（20日）}
+
+# ---------------------------------------------------------------------
+# 財務
+# ---------------------------------------------------------------------
+financials:
+  unit: 億円
+  shares_assumption: 期中平均株式数は各期とも7,500万株（自己株式除く）で計算
+  periods:
+    "2021-02":
+      label: 2021年2月期
+      equity: 1050
+    "2022-02":
+      label: 2022年2月期
+      revenue: 3880
+      operating_income: 141
+      operating_margin_pct: 3.6
+      ordinary_income: 146
+      net_income: 88
+      equity: 1110
+      roe_pct: 8.1
+      dividend_yen: 40
+    "2023-02":
+      label: 2023年2月期
+      revenue: 3990
+      operating_income: 118
+      operating_margin_pct: 3.0
+      ordinary_income: 122
+      net_income: 70
+      equity: 1135
+      roe_pct: 6.2
+      dividend_yen: 40
+    "2024-02":
+      label: 2024年2月期
+      revenue: 4120
+      operating_income: 124
+      operating_margin_pct: 3.0
+      ordinary_income: 128
+      net_income: 74
+      equity: 1165
+      roe_pct: 6.4
+      dividend_yen: 40
+    "2025-02":
+      label: 2025年2月期
+      revenue: 4310
+      operating_income: 138
+      operating_margin_pct: 3.2
+      ordinary_income: 141
+      net_income: 82
+      extraordinary_loss_incident: 12   # 3.9事案（システム障害対応費用）
+      equity: 1210
+      roe_pct: 6.9
+      eps_yen: 109.3
+      dividend_yen: 44
+    "2026-02":
+      label: 2026年2月期
+      revenue: 4520
+      operating_income: 151
+      operating_margin_pct: 3.3
+      ordinary_income: 155
+      net_income: 90
+      equity: 1265
+      roe_pct: 7.3
+      eps_yen: 120.0
+      dividend_yen: 48              # 中間24円・期末24円
+      payout_ratio_pct: 40.0
+      total_assets: 3420
+      net_assets: 1290
+      equity_ratio_pct: 37.0
+      interest_bearing_debt: 830
+      operating_cf: 285
+      investing_cf: -330
+      free_cf: -45
+      capex: 340
+      depreciation: 175
+      plan_year1: {revenue: 4550, operating_income: 155}   # 中計初年度の計画値
+      segments:
+        retail:
+          external_revenue: 3090
+          profit: 82
+          detail: {stores_revenue: 2830, ec_revenue: 260, stores_profit: 93, ec_profit: -11}
+        logistics:
+          external_revenue: 1330
+          intersegment_revenue: 520
+          profit: 88
+        digital_other:
+          external_revenue: 100
+          profit: 3
+          detail: {logi_cloud_profit: -9, real_estate_profit: 13, retail_media_profit: 1, other_profit: -2}
+      adjustment: -22
+      kpi:
+        existing_store_sales_yoy_pct: 2.4
+        pb_ratio_pct: 18.5
+        ec_ratio_pct: 8.4            # EC売上 ÷ リテール事業の営業収益
+        tpl_clients: 228
+        logi_cloud_arr: 28
+        female_manager_ratio_pct: 14.5
+
+  h1:
+    "2027-02":
+      label: 2027年2月期 中間期（2026年3月〜8月）
+      announced: 2026-10-09
+      briefing: 2026-10-14
+      actual: {revenue: 2330, operating_income: 72, ordinary_income: 74, net_income: 43}
+      prior_year: {revenue: 2213, operating_income: 70, ordinary_income: 72, net_income: 41}
+      plan: {revenue: 2350, operating_income: 80}
+      revenue_yoy_pct: 5.3
+      operating_income_yoy_pct: 2.9
+      revenue_vs_plan_pct: 99.1
+      operating_income_vs_plan_pct: 90.0
+      segments_actual:
+        retail:
+          external_revenue: 1580
+          profit: 31
+          detail: {stores_revenue: 1440, ec_revenue: 140, stores_profit: 37, ec_profit: -6}
+        logistics:
+          external_revenue: 700
+          intersegment_revenue: 265
+          profit: 46
+        digital_other:
+          external_revenue: 50
+          profit: 6
+      adjustment_actual: -11
+      segments_prior_year:
+        retail:
+          external_revenue: 1520
+          profit: 36
+          detail: {stores_revenue: 1395, ec_revenue: 125, stores_profit: 40, ec_profit: -4}
+        logistics:
+          external_revenue: 645
+          intersegment_revenue: 255
+          profit: 40
+        digital_other:
+          external_revenue: 48
+          profit: 2
+      adjustment_prior_year: -8
+      segments_plan:
+        retail: {profit: 37}
+        logistics: {profit: 48}
+        digital_other: {profit: 4}
+      adjustment_plan: -9
+      # 営業利益の計画差 -8.0億円の要因（西脇CFOの分析）
+      variance_vs_plan:
+        retail:
+          customer_count_decline: -2.5        # 既存店客数の減少による粗利減
+          waste_loss_increase: -1.0           # 生鮮・日配の廃棄ロス増
+          part_timer_wages_and_hiring: -2.5   # パート時給の前倒し改定・採用費
+          ec_loss_expansion: -2.0             # ネットスーパー新センターの立ち上げ費用
+          electricity: -0.5
+          sga_savings: 2.5                    # 販促費・その他経費の抑制
+        logistics:
+          new_3pl_onboarding_delay: -1.0      # 新規3PL荷主の受け入れ時期のずれ
+          fuel_and_subcontract_freight: -1.0
+          driver_labor_cost: -1.0
+          price_revision_effect: 1.0          # 3PL料金改定の効果
+        digital_other:
+          logi_cloud_new_contracts: 1.5
+          real_estate: 0.5
+        corporate:
+          tide_phase1_stabilization: -0.7     # TIDE第1フェーズ稼働後の安定化対応
+          security_spend_pull_forward: -0.8   # セキュリティ対策の前倒し（通期では計画内）
+          other: -0.5
+      kpi:
+        existing_store_sales_yoy_pct: 2.1
+        existing_store_customers_yoy_pct: -0.8
+        existing_store_ticket_yoy_pct: 2.9
+        fresh_daily_waste_rate_pct: 4.8
+        fresh_daily_waste_rate_prior_pct: 4.6
+        ec_sales_yoy_pct: 12.0
+        new_3pl_clients: 9
+        logi_cloud_arr: 34
+        logi_cloud_customers: 182
+
+  forecast:
+    "2027-02":
+      label: 2027年2月期 通期予想（期初予想を2026年10月9日に据え置き）
+      revenue: 4750
+      operating_income: 170
+      operating_margin_pct: 3.6
+      ordinary_income: 173
+      net_income: 103
+      eps_yen: 137.3
+      dividend_yen: 54             # 中間27円・期末27円
+      payout_ratio_pct: 39.3
+      implied_h2:
+        revenue: 2420
+        operating_income: 98
+        operating_income_yoy_pct: 21.0   # 前年下期（81億円）比
+
+# ---------------------------------------------------------------------
+# 中期経営計画
+# ---------------------------------------------------------------------
+mid_term_plan:
+  name: MINATOYA NEXT 2028
+  announced: 2025-04-14
+  period: 2026年2月期〜2028年2月期（3年間）
+  slogan: 届ける力で、地域の明日をつくる
+  targets_2028_02:
+    revenue: 5000
+    operating_income: 225
+    operating_margin_pct: 4.5
+    roe_pct_min: 10
+    roic_pct_min: 7
+    segment_profit: {retail: 115, logistics: 125, digital_other: 15, adjustment: -30}
+    tpl_external_revenue: 1600
+    ec_revenue: 400
+    pb_ratio_pct: 25
+    logi_cloud_arr: 80
+    smart_dc_sites: 3
+    co2_reduction_pct: 35                # Scope1+2、2021年2月期比
+    waiting_hours_per_trip: 1.0          # 自社センターの荷待ち・荷役時間（1運行平均）
+    truck_load_factor_pct: 70
+    digital_talent: 300
+    female_manager_ratio_pct: 20
+    payout_ratio_pct: 40
+  capital_policy:
+    wacc_pct_estimate: 6
+    debt_to_ebitda_max: 3          # 有利子負債はEBITDAの3倍以内
+  h2_initiatives:
+    pb_price_freeze_items: 300     # 下期に価格を据え置くPB「港のめぐみ」の主要品目数
+  investment_3y:
+    total: 1350
+    stores: 420
+    logistics: 480
+    it_digital: 330
+    human_capital_other: 120
+    it_digital_breakdown: {tide: 105, logi_cloud: 70, data_ai: 55, security: 50, store_it: 50}
+
+# ---------------------------------------------------------------------
+# 店舗・物流・デジタル
+# ---------------------------------------------------------------------
+stores:
+  "2025-02": {total: 184}
+  "2026-02": {total: 188, standard: 151, quick: 37}
+  "2026-08":
+    total: 190
+    standard: 152
+    quick: 38
+    by_prefecture: {静岡県: 96, 愛知県: 38, 神奈川県: 26, 山梨県: 18, 長野県: 12}
+
+store_ops:
+  hq_inquiries_monthly: 30000     # 店舗から本部への問い合わせ（電話など、月あたり件数）
+
+rural:
+  unprofitable_candidates: 6      # 西脇CFOが見直し候補に挙げた中山間地の店舗数
+  mobile_sales_vehicles: 14       # 移動販売車「ミナトヤ号」
+  drone_pilot: 2027年2月期中に県内の中山間地域で実証予定
+
+logistics:
+  as_of: 2026-08-31
+  centers: 38
+  centers_owned: 14
+  centers_leased: 24
+  floor_area_10k_m2: 92
+  trucks: 1380
+  drivers: 1420
+  drivers_needed_2027: 1520
+  partner_carriers: 610
+  tpl_clients: 237
+  truck_load_factor_pct: 62
+  waiting_hours_per_trip:          # 自社センターの荷待ち・荷役時間（1運行平均、時間）
+    "2024-02": 2.4
+    "2025-08": 1.8
+    "2026-08": 1.6
+  route_share:
+    name: 東海ルートシェア
+    start: "2024-04"
+    shippers:
+      "2025-10": 26
+      "2026-08": 34
+    target_shippers_2028_02: 80
+  smart_dc:
+    hamamatsu:
+      start: "2023-10"
+      floor_area_m2: 68000
+      amr_phase1: 180
+      amr_phase2_add: 120
+      amr_total_after_phase2: 300
+      phase2_start: "2026-12"
+      productivity_multiplier: 2.3    # 従来型センター比の生産性（行/人時）
+      walking_reduction_pct: 70       # 作業者の歩行距離の削減率
+      misship_rate_pct: 0.01
+    planned:
+      - 静岡中部スマートDC（藤枝市、2027年9月稼働予定）
+      - 神奈川スマートDC（厚木市、2028年2月期中に着工予定）
+
+digital:
+  minatoya_digital:
+    established: "2022-04"
+    employees_at_founding: 120
+    employees: 460
+    engineers: 310
+  cartgraph:
+    founded: "2015-07"
+    acquired: "2022-04"
+    acquisition_price: 85
+    founding_members: 22
+    pilot_2019:                       # 2019年 浜松での協働ロボット実証
+      walking_reduction_pct: 60
+      productivity_gain_pct: 45
+  logi_cloud:
+    launched: "2023-04"
+    arr:
+      "2025-02": 19
+      "2026-02": 28
+      "2026-08": 34
+    customers_2026_08: 182
+    revenue_2026_02: 24
+    profit_2026_02: -9
+    profit_h1_2027_02: -2
+    first_monthly_profit: "2026-08"
+    target_arr_2028_02: 80
+    carveout_proposal:             # 真壁CTOの構想（2026年11月10日に第1回の方針審議）
+      new_company: ミナトヤ・ロジクラウド（仮称）
+      target_timing: "2027-03"
+      external_raise: 50
+      hd_ownership_min_pct: 60
+  shiomi:                             # AI需要予測・発注（社内呼称「シオミ」＝潮見）
+    pilot_start: "2025-10"
+    pilot_stores: 12
+    pilot_results:
+      waste_rate_before_pct: 4.8
+      waste_rate_after_pct: 3.9
+      stockout_rate_before_pct: 2.1
+      stockout_rate_after_pct: 1.8
+      ordering_hours_before: 4.5      # 1店舗1日あたりの発注作業時間
+      ordering_hours_after: 1.7
+    cto_estimates:                  # 真壁CTOの試算（廃棄削減による効果、億円）
+      if_all_stores_h1: 6.0         # 上期に全店で動いていた場合
+      h2_30_stores_3months: 0.5     # 承認された30店・3か月
+      h2_60_stores: 2.0             # CTOが求めた60店に前倒しした場合
+    expansion_approved:
+      date: 2026-10-20
+      stores: 30
+      period: 2026年12月〜2027年2月（3か月）
+      exit_criterion: 欠品率が導入前より0.5ポイント以上悪化した店は停止
+      human_approval: 発注額が前週比30%以上増える品目・新商品・特売品は人が承認
+  minato_ai:
+    launched: "2025-06"
+    users: 4800
+  data_harbor:
+    launched: "2024-10"
+
+# ---------------------------------------------------------------------
+# IT・セキュリティ
+# ---------------------------------------------------------------------
+it:
+  it_dept:
+    name: 情報システム本部
+    staff: 128
+    resident_partners: 90
+  it_spend_2026_02:                   # 連結IT費（運用費＋投資）
+    total: 168
+    maintenance_operations: 92
+    new_development: 58
+    security: 13
+    other: 5
+  cost_cut_proposal:                  # 西脇CFOの下期コスト対策案
+    pct: 10
+    amount: 17
+  concurrent_pilots_2026_10: 14       # 店舗・センターで同時に走っている実証（PoC）の本数。CIOが現場負荷の根拠に挙げる
+  it_investment_committee:
+    chair: CIO
+    threshold: 0.5                    # 5,000万円以上のIT投資はグループ横断で審査
+  legacy_core:
+    name: MOSS
+    launched: "1998-02"
+    cobol_programs: 1200
+    hardware_support_end: "2028-06"
+  tide:
+    approved: "2024-04"
+    budget_initial: 142
+    additional_request: 38
+    budget_revised: 180
+    phases:
+      phase1: {scope: 会計・人事給与, go_live: "2025-09", status: 稼働済み, rehearsals: 4}
+      phase2: {scope: 購買・在庫・店舗発注, go_live_planned: "2026-11", go_live_proposed: "2027-05"}
+      phase3: {scope: 物流基幹の統合とMOSS停止, go_live_planned: "2027-09", go_live_proposed: "2028-03"}
+    delay_causes:
+      additional_requirements: 140
+      additional_requirements_store_ordering: 90
+      undocumented_cobol_affecting_phase2: 340
+      master_data_inconsistency_pct: 4.2
+      sku_count: 380000
+    scope_freeze_reject: 112       # 追加要件140件のうち Fit to Standard で却下する件数（CIO案、8割）
+    additional_budget_breakdown:
+      additional_development: 17
+      migration_and_testing: 8
+      extended_vendor_and_pmo: 7
+      moss_extension: 3.6
+      contingency: 2.4
+    moss_extension_monthly: 0.6
+    first_signs: "2026-05"
+    formal_report: 2026-09-29
+    decision_meeting: 2026-11-10
+    board_meeting: 2026-11-26
+  security:
+    annual_budget_2026_02: 13
+    annual_budget_request: 16
+    partner_assessment: {total: 610, completed: 212}
+    bcp_drill_2026_10: {rto_target_hours: 12, rto_actual_hours: 15}
+  incident_2024_03:
+    date: 2024-03-09
+    downtime_hours: 36
+    sites: [清水DC, 沼津DC]
+    stores_affected: 42
+    tpl_clients_affected: 18
+    ransom_paid: false
+    personal_data_leak: 確認されず（外部フォレンジック調査で確認）
+    extraordinary_loss: 12
+    entry_point: 保守委託先の再委託先が使っていたVPN機器の脆弱性
+
+# ---------------------------------------------------------------------
+# 人・株式
+# ---------------------------------------------------------------------
+people:
+  new_hires_2026_04: 312
+  wage_increase_2026:
+    regular_pct: 5.2
+    base_up_pct: 3.0
+    part_timer_hourly_pct: 6.8
+  store_part_timer_fill_rate_pct: 93
+
+stock:
+  shares_outstanding_ex_treasury: 75000000
+  price_2026_10_30: 2180
+  market_cap: 1635
+  bps_yen_2026_02: 1687
+  pbr: 1.29
+  per_forecast: 15.9
+  major_shareholders:
+    - {name: 株式会社杉村興産（創業家の資産管理会社）, pct: 18.5}
+    - {name: 信託銀行（信託口）A, pct: 9.8}
+    - {name: 信託銀行（信託口）B, pct: 4.6}
+    - {name: ミナトヤ従業員持株会, pct: 4.2}
+    - {name: ミナトヤ取引先持株会, pct: 2.9}
+    - {name: 地方銀行（主要取引銀行）, pct: 2.4}
+
+# ---------------------------------------------------------------------
+# 経営陣・会議体
+# ---------------------------------------------------------------------
+executives:
+  - {id: president, name: 望月 誠一郎, title: 代表取締役社長 CEO, age: 61, persona: personas/president}
+  - {id: cto, name: 真壁 玲奈, title: 取締役 常務執行役員 CTO（ミナトヤ・デジタル 代表取締役社長）, age: 44, persona: personas/cto}
+  - {id: cio, name: 片桐 慎一, title: 執行役員 CIO 兼 CISO 兼 情報システム本部長, age: 57, persona: personas/cio}
+  - {id: cfo, name: 西脇 昌弘, title: 取締役 専務執行役員 CFO, age: 62, note: 地方銀行出身。数字の番人で慎重派}
+  - {id: retail_coo, name: 石垣 美和, title: 取締役 常務執行役員（ミナトヤ 代表取締役社長）, age: 55, note: パートから店長・本部長を経て事業会社の社長に。現場の代弁者}
+  - {id: logistics_clo, name: 大河内 剛, title: 取締役 常務執行役員 CLO（ミナトヤ・ロジスティクス 代表取締役社長）, age: 58, note: 物流統括管理者。協力会社との交渉に強い}
+  - {id: planning, name: 杉村 拓海, title: 経営企画部長（経営会議 事務局）, age: 36, note: 創業家。杉村健三の長男}
+  - {id: founder_family, name: 杉村 健三, title: 相談役（取締役ではない）, age: 79, note: 2代目社長（1990〜2021年）。望月を後継に指名した}
+
+board:
+  total: 9
+  inside: [望月 誠一郎, 西脇 昌弘, 石垣 美和, 大河内 剛, 真壁 玲奈]
+  outside:
+    - 青柳 和彦（元・大手物流会社 取締役）
+    - 佐伯 真理子（弁護士）
+    - 香坂 聡（大学教授、サプライチェーン論）
+    - リサ・ナカムラ（元・外資系IT企業 日本法人社長）
+
+meetings:
+  management_committee:
+    name: 経営会議
+    schedule: 原則月2回の火曜、9時〜10時30分（90分厳守）
+    place: 清水本社 第1会議室（東京本部とオンライン接続）
+    members: [president, cfo, retail_coo, logistics_clo, cto, cio]
+    secretariat: 経営企画部（杉村 拓海）
+  recent:
+    - {date: 2026-09-29, summary: 片桐CIOがTIDE第2フェーズの遅延を正式報告し、報告の遅れを陳謝}
+    - {date: 2026-10-20, summary: 上期レビュー。シオミの30店拡大を条件付き承認。IT費は一律削減せず、CTOとCIOが合同で優先順位案を作ることに}
+  upcoming:
+    - date: 2026-11-10
+      kind: 経営会議
+      agenda:
+        - TIDE 追加予算38億円・6か月延期の審議（店舗発注の切り出し案と比較）
+        - Logi Cloud 分社化の方針審議（第1回）
+        - セキュリティ予算の増額（年13億円→16億円）
+        - 下期コスト対策（IT費の優先順位案を含む）
+    - date: 2026-11-26
+      kind: 取締役会
+      agenda:
+        - TIDE 追加予算の決議
+
+open_issues:
+  - {id: h1_recovery, title: 上期の計画未達と下期の挽回策, decide_by: 2026-11-10}
+  - {id: tide_budget, title: TIDE 追加予算38億円・6か月延期, decide_by: 2026-11-26}
+  - {id: logi_cloud_carveout, title: Logi Cloud の分社化と外部資本の受け入れ, decide_by: "2027-01"}
+  - {id: ai_ordering_rollout, title: AI発注「シオミ」の全店展開, decide_by: "2027-03"}
+  - {id: security_budget, title: セキュリティ予算の増額（年13億円→16億円）, decide_by: 2026-11-10}
+  - {id: driver_shortage, title: ドライバー不足と改正物流効率化法への対応, decide_by: 継続審議}
+  - {id: rural_stores, title: 中山間地の不採算店舗と移動販売, decide_by: "2026-12"}
+  - {id: it_cost_cut, title: IT費10%削減案（西脇CFO）, decide_by: 2026-11-10}
+
+competitors:   # すべて架空
+  - {name: ベイサイド・リテイリング, type: 神奈川発の食品スーパー, note: 生鮮の鮮度とデジタル販促に強い}
+  - {name: グリーンヒル・マート, type: 愛知発のディスカウント型スーパー, note: 低価格を武器に静岡県西部へ出店攻勢}
+  - {name: ドラッグストア各社, type: 食品売場を拡大する業態, note: 日配・加工食品で客数を奪う}
+  - {name: 総合物流大手（X社・Y社）, type: 3PL競合, note: 全国網と価格で競合}
